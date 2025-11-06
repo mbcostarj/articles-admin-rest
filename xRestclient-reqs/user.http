@@ -1,0 +1,63 @@
+
+@baseUrl = http://localhost:3000
+@token = {{login.response.body.access_token}}
+
+###
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  //"email": "root@admin.com",
+  //"password": "123@Mudar"
+
+  //reader
+  //"email": "reader@system.com",
+  //"password": "123@Fui"
+
+  //editor
+  "email": "editor@system.com",
+  "password": "123@Fui"
+}
+
+###
+GET {{baseUrl}}/permissions/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/users/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{baseUrl}}/users/4e69e585-63e4-4569-92cb-c47dde3c5c50
+Authorization: Bearer {{token}}
+
+###
+POST {{baseUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Editor User",
+    "email": "editor@system.com",
+    "password": "123@Fui",
+    "permissions": ["editor"]
+}
+
+###
+PATCH {{baseUrl}}/users/7b86d14a-4cf8-472e-bf61-c8ba85c9632d
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Cleber João Ninguém da Silva",
+    "email": "testador@gmail.com",
+    "password": "Teste@321"
+}
+
+###
+DELETE {{baseUrl}}/users/741e6f3e-bbc2-4c1d-881f-99334cebadea
+Content-Type: application/json
+Authorization: Bearer {{token}}

@@ -1,0 +1,96 @@
+@baseUrl = http://localhost:3000
+@token = {{login.response.body.access_token}}
+
+###
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "root@admin.com",
+  "password": "123@Mudar"
+
+  //reader
+  //"email": "reader@reader.com",
+  //"password": "123@Fui"
+
+  //editor
+  //"email": "editor@editor.com",
+  //"password": "123@Fui"
+}
+
+###
+GET {{baseUrl}}/articles/
+Authorization: Bearer {{token}}
+
+
+###
+GET {{baseUrl}}/articles/f088c8cf-7cd1-429f-a8a5-0b1f759e6238
+Authorization: Bearer {{token}}
+
+###
+POST {{baseUrl}}/articles
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Mussum Ipsum, cacilds vidis litro abertis",
+    "content": "Negão é teu passadis, eu sou faxa pretis. Viva Forevis aptent taciti sociosqu ad litora torquent. Suco de cevadiss deixa as pessoas mais interessantis. Morbi viverra placerat justo, vel pharetra turpis. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Sapien in monti palavris qui num significa nadis i pareci latim. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Interagi no mé, cursus quis, vehicula ac nisi."
+    
+}
+
+###
+PATCH {{baseUrl}}/articles/f088c8cf-7cd1-429f-a8a5-0b1f759e6238
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Editei o título e vejo se isso funciona",
+    "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in tellus sit amet nunc interdum hendrerit id sit amet ipsum. Morbi luctus ornare quam at gravida. Aenean neque dolor, elementum at libero eu, viverra consectetur sapien. Etiam sit amet pretium urna. Donec varius cursus arcu in bibendum. Etiam luctus nisi quis mauris blandit, varius placerat risus varius. Aenean vehicula ex in fringilla pretium. Cras id blandit est. Curabitur at nunc et leo pellentesque egestas nec ac purus. Nullam quam erat, pellentesque quis lacus nec, accumsan feugiat ligula. Donec sollicitudin convallis malesuada. Donec neque mauris, blandit nec dapibus eu, molestie eu velit.</p>"
+}
+
+###
+PATCH {{baseUrl}}/articles/inline-edit
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "articles": [
+        {
+            "id": "0b76d7f4-16b8-40bc-8c7b-8ee21b2dae59", 
+            "data": {
+                "title": "Estou testando a alteração em massa",
+                "content": "Lorem ipsum dolor sit amet. Aut recusandae suscipit At molestiae unde eum culpa fugiat est dolores quia et eligendi dolor quo recusandae sunt et sapiente minima. Cum obcaecati pariatur quo placeat officia non velit alias ex quos ducimus est temporibus magni ea illum atque. Et culpa velit non deleniti minus ut quos atque et deserunt cupiditate. Nam itaque dolores sit nemo exercitationem est minus deserunt ut deserunt ipsam ea fugit saepe et veritatis eveniet nam explicabo aliquam. Et nihil provident id quia commodi vel vero consequatur. Sed cumque beatae ad laboriosam praesentium est eaque officiis eum distinctio quae. Ut nostrum magni qui omnis facilis ad tempore libero aut accusantium laudantium. Et saepe autem hic saepe sunt sed animi laudantium ex ipsam deserunt. Est ratione dolor non similique ullam qui repellendus molestias aut quam omnis sed sapiente aspernatur ut veniam dolor."
+            }
+        },
+        {
+            "id": "75907e1f-5549-4bd4-9538-1a8125728db6", 
+            "data": {
+                "title": "Governo aprova medida para limitar requisições http"
+            }
+        },
+        {
+            "id": "e017584a-f11d-434f-9c19-66a78517140d", 
+            "data": {
+                "content": "ESTE E MEU CONTEUDO EDITADO Vestibulum iaculis tempor libero vitae commodo. Vivamus iaculis fermentum turpis, euismod congue dui tristique a. Duis iaculis semper justo non iaculis. Donec suscipit, sem sed maximus rhoncus, nulla est viverra orci, non vulputate enim diam sit amet lacus. Quisque non lectus sed dui facilisis porta. Ut tempor scelerisque lobortis. Donec vehicula maximus ante eget vestibulum."
+            }
+        }
+    ]
+}
+
+###
+DELETE {{baseUrl}}/articles/1fd4cb4e-1dd2-4bad-821d-9ed445e78336
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+DELETE {{baseUrl}}/articles/inline-delete/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "ids": [
+    "cf5be6d2-5fef-4fa6-9f02-e94ef676d7a4",
+    "f088c8cf-7cd1-429f-a8a5-0b1f759e6238"
+  ]
+}

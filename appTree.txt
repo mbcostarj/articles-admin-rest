@@ -1,0 +1,104 @@
+articles-admin-rest
+├── .env
+├── .gitignore
+├── .vscode
+│   ├── extensions.json
+│   └── settings.json
+├── docker-compose.yml
+├── Dockerfile
+├── eslint.config.mjs
+├── nest-cli.json
+├── package-lock.json
+├── package.json
+├── prisma
+│   ├── migrations
+│   │   ├── 20251105115917_inicial
+│   │   │   └── migration.sql
+│   │   └── migration_lock.toml
+│   ├── schema.prisma
+│   └── seed.ts
+├── prisma.config.ts
+├── README.md
+├── src
+│   ├── app.module.ts
+│   ├── common
+│   │   ├── db
+│   │   │   ├── database.module.ts
+│   │   │   └── database.service.ts
+│   │   ├── errors
+│   │   │   └── not-found.error.ts
+│   │   ├── filters
+│   │   │   └── not-found.filter.ts
+│   │   └── utils
+│   │       └── sanitizer.util.ts
+│   ├── generated
+│   │   └── prisma
+│   │       ├── browser.ts
+│   │       ├── client.ts
+│   │       ├── commonInputTypes.ts
+│   │       ├── enums.ts
+│   │       ├── internal
+│   │       │   ├── class.ts
+│   │       │   ├── prismaNamespace.ts
+│   │       │   └── prismaNamespaceBrowser.ts
+│   │       ├── libquery_engine-linux-musl-openssl-3.0.x.so.node
+│   │       ├── models
+│   │       │   ├── Article.ts
+│   │       │   ├── Permission.ts
+│   │       │   └── User.ts
+│   │       ├── models.ts
+│   │       └── query_engine-windows.dll.node
+│   ├── main.ts
+│   └── modules
+│       ├── articles
+│       │   ├── articles.controller.ts
+│       │   ├── articles.module.ts
+│       │   ├── articles.service.ts
+│       │   ├── dto
+│       │   │   ├── create-article.dto.ts
+│       │   │   ├── inline-delete.dto.ts
+│       │   │   ├── inline-update.dto.ts
+│       │   │   ├── list-query.dto.ts
+│       │   │   └── update-article.dto.ts
+│       │   ├── errors
+│       │   │   └── article.error.ts
+│       │   └── slug.service.ts
+│       ├── auth
+│       │   ├── auth.controller.ts
+│       │   ├── auth.guard.ts
+│       │   ├── auth.module.ts
+│       │   ├── auth.service.ts
+│       │   ├── dto
+│       │   │   └── login.dto.ts
+│       │   ├── errors
+│       │   │   └── auth.error.ts
+│       │   ├── filters
+│       │   │   └── invalid-credentials-error.filter.ts
+│       │   ├── permissions.decorator.ts
+│       │   ├── permissions.guard.ts
+│       │   └── roles
+│       │       ├── role.ts
+│       │       └── roles.decorator.ts
+│       ├── permissions
+│       │   └── permissions.module.ts
+│       └── users
+│           ├── dto
+│           │   ├── create-user.dto.ts
+│           │   ├── list-user-query.dto.ts
+│           │   └── update-user.dto.ts
+│           ├── errors
+│           │   └── user.error.ts
+│           ├── filters
+│           │   └── email-already-exists.filter.ts
+│           ├── users.controller.ts
+│           ├── users.module.ts
+│           └── users.service.ts
+├── test
+│   ├── app.e2e-spec.ts
+│   └── jest-e2e.json
+├── tree.txt
+├── tsconfig.build.json
+├── tsconfig.json
+└── xRestclient-reqs
+    ├── article.http
+    └── user.http

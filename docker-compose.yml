@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./
+    container_name: articles_rest
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+    volumes:
+      #- ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: sh -c "npx prisma generate && npm run db:init && npm run start:dev"
+    networks:
+      - app_network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DB}
+    env_file:
+      - .env
+    ports:
+      - '${DB_PORT}:5432'
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+volumes:
+  pg_data:
+networks:
+  app_network:
+    driver: bridge
