@@ -45,3 +45,19 @@ Suba a aplicação e o banco de dados em containers
 ```bash
 docker-compose up -d --build
 ```
+
+Após o docker compose criar e iniciar os serviços `postgres` e `backend`, como descrito no arquivo `docker-compose.yml`, o comando `npx prisma generate && npm run db:init && npm run start:dev` será executado no **backend**. Este comando cria o _@prisma/client_, executa a seed, para criação das permissões de usuário e usuário root (descrição abaixo) e inicia a aplicação.
+
+```
+"name": "Root User",
+"email": "root@admin.com",
+"password": "123@Mudar",
+"permissions": [
+  {
+    "name": "admin",
+    "description": "Full access to all actions"
+  }
+]
+```
+
+> Na pasta `xRestclient-reqs` você encontra as requisições prontas para testar o uso.

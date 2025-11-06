@@ -8,16 +8,16 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  //"email": "root@admin.com",
-  //"password": "123@Mudar"
+  "email": "root@admin.com",
+  "password": "123@Mudar"
 
   //reader
   //"email": "reader@system.com",
   //"password": "123@Fui"
 
   //editor
-  "email": "editor@system.com",
-  "password": "123@Fui"
+  //"email": "editor@system.com",
+  //"password": "123@Fui"
 }
 
 ###
